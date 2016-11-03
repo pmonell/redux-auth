@@ -34,7 +34,7 @@ export function configure(endpoint={}, settings={}) {
       return Promise.resolve({blank: true});
     }
     console.log('inside configure')
-    dispatch(authenticateStart());
+    // dispatch(authenticateStart());
 
     let promise,
         firstTimeLogin,
