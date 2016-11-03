@@ -95,7 +95,10 @@ export function applyConfig({dispatch, endpoint={}, settings={}, reset=false}={}
 
   if (getCurrentSettings().initialCredentials) {
     // skip initial headers check (i.e. check was already done server-side)
+    console.log(getCurrentSettings().initialCredentials)
     let {user, headers} = getCurrentSettings().initialCredentials;
+    console.log(user)
+    console.log(headers)
     persistData(C.SAVED_CREDS_KEY, headers);
     return Promise.resolve(user);
   } else if (savedCreds) {
