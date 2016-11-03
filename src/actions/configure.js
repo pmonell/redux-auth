@@ -33,7 +33,7 @@ export function configure(endpoint={}, settings={}) {
     if (settings.currentLocation && settings.currentLocation.match(/blank=true/)) {
       return Promise.resolve({blank: true});
     }
-
+    console.log('inside configure')
     dispatch(authenticateStart());
 
     let promise,
@@ -41,7 +41,7 @@ export function configure(endpoint={}, settings={}) {
         mustResetPassword,
         user,
         headers;
-
+    console.log(settings.isServer)
     if (settings.isServer) {
       promise = verifyAuth(endpoint, settings)
         .then(({
@@ -77,6 +77,7 @@ export function configure(endpoint={}, settings={}) {
     } else {
       // if the authentication happened server-side, find the resulting auth
       // credentials that were injected into the dom.
+      console.log('if serverside look for token bridge')
       let tokenBridge = document.getElementById("token-bridge");
 
       if (tokenBridge) {
